@@ -1,7 +1,7 @@
 '''Validation_funs.py
 
-Created by David Miller, dmil1991@gmail.com
-Updated: 2/14/2015 by Tara Larrue (tlarrue2991@gmail.com)
+Created by David Miller (dmil1991@gmail.com)
+Updated by Tara Larrue (tlarrue2991@gmail.com)
 
 Various functions that useful for map pixel extraction and validation of LandTrendr outputs.
 '''
