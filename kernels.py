@@ -1,13 +1,13 @@
 '''
 Data structures of various kernel shapes & sizes 
 for extracting pixels from rasters.
+UNFINISHED - NEVER IMPLEMENTED.
 '''
 import numpy as np 
 import sys
 
-
 #SQUARE
-def Square:
+def Square():
 
 	def __init__(self, size):
 		self.size = __validSize(size)
@@ -25,7 +25,7 @@ def Square:
 
 
 #CIRCLE
-def Circle:
+def Circle():
 
 	def __init__(self, size):
 		self.size = __validSize(size)
@@ -44,11 +44,11 @@ def Circle:
 	def calcMask(self):
 		base = np.ones((self.width, self.height))
 		#define pixels to turn off
-		if self.size = 3:
+		if self.size == 3:
 			delRange = [0]
-		elif self.size = 5:
+		elif self.size == 5:
 			delRange = [-1,0,1]
-		elif self.size = 7:
+		elif self.size == 7:
 			delRange = [-3,-2,-1,0,1,2]
 		else:
 			errMsg = "Size '", str(self.size), "' mask not yet defined."
