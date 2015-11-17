@@ -194,7 +194,7 @@ def expandPathRows(sceneSets):
 def getLTFile(pathrow, search_strings):
     '''Finds file within LT scenes directory'''
     pathrow = sixDigitTSA(pathrow)
-    topdir = os.path.join(os.environ['LT_SCENES'], pathrow)
+    topdir = os.path.join(SCENES_DIR, pathrow)
     filelist = []
     for i in search_strings:
         filelist.extend(glob.glob(os.path.join(topdir,i)))
@@ -274,7 +274,7 @@ def appendMetric(csvData, metric, columnPrefix):
     return csvData
 
 def makeConfusion(y_test, predictions, classes):
-    '''Creates a cofnusion matrix & calculated producers, users & overall accuracies.
+    '''Creates a confusion matrix & calculated producers, users & overall accuracies.
     All inputs are array-like type.'''
     cm = confusion_matrix(y_test, predictions, labels=classes)
     numPred = np.sum(cm,axis=0).astype('f8')
