@@ -285,7 +285,7 @@ def appendSumKernels(csvData, columnPrefixes):
 
     return csvData, '_'.join(addHeaders[0].split('_')[:-1])
 
-def appendMetric(csvData, metric, columnPrefix):
+def appendMetric(csvData, metric, columnPrefix, options=None):
     '''Append a metric (mean,median, etc. calculated from all fields starting wtih columnPrefix)
      column to structured array'''
 
@@ -293,24 +293,16 @@ def appendMetric(csvData, metric, columnPrefix):
     columnHeaders = list(filter(lambda x: x.startswith(columnPrefix.upper()), csvData.dtype.names))
     addHeader = metric.upper() + "_" + columnPrefix.upper()
     csvData = append_fields(csvData, addHeader, data=np.zeros(csvData.size), dtypes='f8')
+    
+    #get stat function
+    func = getStatFunc(metric, options)
 
     #calculate indicated metric & populate csv data
     columns = csvData[columnHeaders].copy()
     for ind,row in enumerate(columns):
         row_list = [int(i) for i in row]
-
-        if metric.lower() == "mean":
-            csvData[addHeader][ind] = np.mean(row_list)
-        elif metric.lower() == "median":
-            csvData[addHeader][ind] = np.median(row_list)
-        elif metric.lower() == "max":
-            csvData[addHeader][ind] = np.max(row_list)
-        elif metric.lower() == "min":
-            csvData[addHeader][ind] = np.min(row_list)
-        elif metric.lower() == "num_pix_gt_0":
-            csvData[addHeader][ind] = sum(1 for x in row_list if (x > 0))
-        else:
-            sys.exit("Metric not understood: " + metric.lower())
+        
+        csvData[addHeader][ind] = func(row_list)
 
     return csvData
 
@@ -341,7 +333,8 @@ def makeConfusion(y_test, predictions, classes):
 
     return full_cm
 
-def makeConfusion_diffLabels(data, truthCol, predictionCol):
+def 
+:
     '''Creates a confusion matrix for datasets w/ different truth & prediction labels. 
     Does NOT calculate users/producers accuracy. truthCol/predictionCol are strings.'''
     truthLabels = np.unique(data[truthCol]) 
