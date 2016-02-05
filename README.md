@@ -51,7 +51,7 @@ ______________________________________________________________________
 
 Reads value(s) from band centered around [x,y] with width and height. Also returns corresponding coordinates.
 
-
+.
 #####*Working with CSVs & Data Structures*
 ______________________________________________________________________
 **arrayToCsv(numpy_array, output_path)**
@@ -88,7 +88,7 @@ ______________________________________________________________________
 
 Appends a metric [mean, median, mode, min, max, stdev, num_pix_gt_0, num_pix_equal, num_pix_between] column to a structured array of data. Metric is calculated from all fields starting with columnPrefix. Options are only necessary for num_pix_equal & num_pix_between, and should be a list.
 
-
+.
 #####*Calculating Statistics*
 ______________________________________________________________________
 statistical_function = getStatFunc(stat_string, options=None)
@@ -106,7 +106,7 @@ ___________________________________________________________________
 **confusionMatrix = makeConfusion_diffLabels(data, truthCol, predictionCol)**
 Creates a confusion matrix for datasets with different truth & prediction labels. Does NOT calculate users/producers accuracy. truthCol and predictionCol are strings.
 
-
+.
 #####*LandTrendr-specific Functions*
 ______________________________________________________________________
 **pathrow_6dig = sixDigitTSA(pathrow)**
@@ -140,7 +140,7 @@ Finds file location within LandTrendr scenes directory. search_strings is a list
 
 **dependent on SCENES_DIR global variable being set on top of lthacks.py script
 
-
+.
 #####*Writing Metadata*
 ______________________________________________________________________
 **createMetadata(arguments, outputPath_data, altMetaDir=None, description=None, lastCommit="UNKNOWN")**
@@ -169,6 +169,7 @@ This is a set a functions originally used for the intersectMask command-line uti
 Functions
 - maskAsArray
 - saveArrayAsRaster
+- saveArrayAsRaster_multiband
 - findLeastCommonBoundaries (from a list of maps)
 - GetExtent (returns corner coordinates of map)
 - transformToCenter (returns center coordinate of a map
@@ -181,8 +182,13 @@ This is useful for masking within a routine if not interested in saving the mask
 ______________________________________________________________________
 **saveArrayAsRaster(outBandArray, transform, projection, driver, outPath, datatype, nodata=None)**
 
-This saves a numpy array as a raster file. 
+This saves a 2D numpy array as a raster file. 
 *Hint: To get transform, projection, & driver information from an existing raster, open the file using ds=gdal.Open(rasterPath, GA_ReadOnly), then use projection=ds.GetProjection() & transform=ds.GetGeoTransform() & ds.GetDriver(). To get datatype: band.DataType*
+
+______________________________________________________________________
+**saveArrayAsRaster_multiband(outbands, transform, projection, driver, outPath, datatype, nodata=None)**
+
+This saves a list of numpy arrays as a raster file (1 array per band).
 
 ______________________________________________________________________
 **corners = GetExtent(geotransform, cols, rows)**
