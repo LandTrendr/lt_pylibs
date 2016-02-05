@@ -54,7 +54,7 @@ def findLeastCommonBoundaries(listOfMaps):
     
     #define transform for final mask
     finalTransform = (upperLeftX, pixSizeX, 0.0, upperLeftY, 0.0, pixSizeY)
-    
+
     return finalSize, finalTransform, projection, driver
 
 def transformToCenter(transform, cols, rows):

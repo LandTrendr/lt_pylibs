@@ -132,7 +132,7 @@ def extract_kernel_and_coords(spec_ds,x,y,width,height,band,transform):
     this_band = spec_ds.GetRasterBand(band)
     specs = this_band.ReadAsArray(xoffset, yoffset, width, height)
     return specs, all_coords 
-    
+   
 def getStatFunc(astring, options=None):
 	'''Returns a statistical function from a "stat string". '''
 
