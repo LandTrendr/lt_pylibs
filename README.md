@@ -154,8 +154,112 @@ Returns last git commit hash, user, and time of specified script.
 
 
 
+######.
+######.
+######.
+
+#### *kernelshapes.py*
 
 
+This module contains class definitions for various kernel shapes used to extract pixels surrounding an (x,y) coordinate from a map.
+
+Shape Menu:
+- Rectangle(width, height)
+- Circle(diameter)
+- Triangle(width, height, quadrant)
+- PieSlice(diameter, startangle, endangle, argNegBool=False)
+
+.
+______________________________________________________________________
+**class kernelshapes.Rectangle(width, height)**
+
+| PARAMETER     |             |
+| :------------ |:-------------|
+| **height**    | *integer* - height of the rectangle kernel for extraction|
+| **width**     | *integer* - width of the rectangle kernel for extraction |
+
+| ATTRIBUTE    |             |
+| :------------ |:-------------|
+| **height**    | *integer* - height of the rectangle kernel for extraction|
+| **width**     | *integer* - width of the rectangle kernel for extraction |
+
+Methods:
+
+*masked_array, data_only_pixels = Rectangle.extract_kernel(ds, band, x, y, transform)*
+
+Extracts rectangle kernel from dataset and returns a 2-d numpy masked array, and a flattened array of only non-masked pixels. For the rectangle kernel, these are the same.
+
+.
+______________________________________________________________________
+**class kernelshapes.Circle(diameter)**
+
+| PARAMETER     |             |
+| :------------ |:-------------|
+| **diameter**    | *integer* - diameter of circle kernel|
+
+| ATTRIBUTE     |             |
+| :------------ |:-------------|
+| **radius**    | *float* - radius of circle kernel|
+| **height**    | *integer* - height of the rectangle kernel for extraction|
+| **width**     | *integer* - width of the rectangle kernel for extraction |
+
+Methods:
+
+*masked_array, data_only_pixels = Circle.extract_kernel(ds, band, x, y, transform)*
+
+Extracts circle kernel from dataset and returns a 2-d numpy masked array, and a flattened array of only non-masked pixels. 
+
+.
+______________________________________________________________________
+**class kernelshapes.Triangle(width, height, quadrant)**
+
+| PARAMETER     |             |
+| :------------ |:-------------|
+| **width**     | *integer* - width of the rectangle kernel for extraction |
+| **height**    | *integer* - height of the rectangle kernel for extraction|
+| **quadrant**     | *string* - which section of rectangle kernel to extract triangle from [choices: “north”, “east”, “south”, “west”] |
+NOTE: Use parameters to control angles & direction of triangle.
+
+| ATTRIBUTE     |             |
+| :------------ |:-------------|
+| **width**     | *integer* - width of the rectangle kernel for extraction |
+| **height**    | *integer* - height of the rectangle kernel for extraction|
+| **quadrant**     | *string* - which section of rectangle kernel to extract triangle from |
+| **midpoint**     | *tuple* - middle coordinate of rectangle kernel |
+
+
+Methods:
+
+*masked_array, data_only_pixels = Triangle.extract_kernel(ds, band, x, y, transform)*
+
+Extracts triangle kernel from dataset and returns a 2-d numpy masked array, and a flattened array of only non-masked pixels.
+
+.
+______________________________________________________________________
+**class kernelshapes.PieSlice(diameter, startangle, endangle, arcNegBool=False)**
+
+| PARAMETER     |             |
+| :------------ |:-------------|
+| **diameter**    | *integer* - diameter of circle kernel|
+| **startangle**     | *float* - start angle of pie arc, in degrees. Angle is based off unit circle. |
+| **endangle**    | *float* - end angle of pie arc, in degrees. Angle is based off unit circle.|
+| **arcNegBool**     | *boolean, optional (default = False)* - Arc to be drawn in the direction of decreasing angles? |
+
+| ATTRIBUTE     |             |
+| :------------ |:-------------|
+| **radius**    | *float* - radius of circle kernel|
+| **width**     | *integer* - width of the rectangle kernel for extraction |
+| **height**    | *integer* - height of the rectangle kernel for extraction|
+| **startangle**     | *float* - start angle of pie arc, in degrees. Angle is based off unit circle. |
+| **endangle**    | *float* - end angle of pie arc, in degrees. Angle is based off unit circle.|
+| **arcNegBool**     | *boolean, optional (default = False)* - Arc to be drawn in the direction of decreasing angles? |
+
+
+Methods:
+
+*masked_array, data_only_pixels = PieSlice.extract_kernel(ds, band, x, y, transform)*
+
+Extracts pie slice kernel from dataset and returns a 2-d numpy masked array, and a flattened array of only non-masked pixels.
 
 ######.
 ######.
