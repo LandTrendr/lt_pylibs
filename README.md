@@ -22,9 +22,9 @@ Functions:
 - csvdata_structured_array = appendMetric(csvdata_structured_array, metric, columnPrefix)
 
 *Calculating Statistics*
-statistical_function = getStatFunc(stat_string, options=None)
-confusion_matrix = makeConfusion(y_test, predictions, classes)
-confusion_matrix = makeConfusion_diffLabels(data, truthCol, predictionCol)
+- statistical_function = getStatFunc(stat_string, options=None)
+- confusion_matrix = makeConfusion(y_test, predictions, classes)
+- confusion_matrix = makeConfusion_diffLabels(data, truthCol, predictionCol)
 
 *LandTrendr-specific Functions*
 - pathrow_6dig = sixDigitTSA(pathrow)
@@ -52,7 +52,7 @@ ______________________________________________________________________
 Reads value(s) from band centered around [x,y] with width and height. Also returns corresponding coordinates.
 
 
-####*Working with CSVs & Data Structures*
+#####*Working with CSVs & Data Structures*
 ______________________________________________________________________
 **arrayToCsv(numpy_array, output_path)**
 
@@ -89,7 +89,7 @@ ______________________________________________________________________
 Appends a metric [mean, median, mode, min, max, stdev, num_pix_gt_0, num_pix_equal, num_pix_between] column to a structured array of data. Metric is calculated from all fields starting with columnPrefix. Options are only necessary for num_pix_equal & num_pix_between, and should be a list.
 
 
-####*Calculating Statistics*
+#####*Calculating Statistics*
 ______________________________________________________________________
 statistical_function = getStatFunc(stat_string, options=None)
 
@@ -107,7 +107,7 @@ ___________________________________________________________________
 Creates a confusion matrix for datasets with different truth & prediction labels. Does NOT calculate users/producers accuracy. truthCol and predictionCol are strings.
 
 
-####*LandTrendr-specific Functions*
+#####*LandTrendr-specific Functions*
 ______________________________________________________________________
 **pathrow_6dig = sixDigitTSA(pathrow)**
 
@@ -141,7 +141,7 @@ Finds file location within LandTrendr scenes directory. search_strings is a list
 **dependent on SCENES_DIR global variable being set on top of lthacks.py script
 
 
-####*Writing Metadata*
+#####*Writing Metadata*
 ______________________________________________________________________
 **createMetadata(arguments, outputPath_data, altMetaDir=None, description=None, lastCommit="UNKNOWN")**
 
