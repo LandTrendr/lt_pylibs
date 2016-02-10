@@ -65,12 +65,17 @@ def extractMaskedKernel(data, width, height, ds, band, x, y, transform):
 	# extract full rectangle kernel
 	full_rectangle = lthacks.extract_kernel(
 		ds, x, y, width, height, band, transform)
+		
+	if (full_rectangle == -9999):
+		return None, None
+		
+	else:
 	
-	# define a masked array so that stats can be computed
-	mask = data[:,:,0]
-	mx = np.ma.masked_array(full_rectangle, mask=mask)
+		# define a masked array so that stats can be computed
+		mask = data[:,:,0]
+		mx = np.ma.masked_array(full_rectangle, mask=mask)
 	
-	return mx, mx.data[~mx.mask]
+		return mx, mx.data[~mx.mask]
 		
 
 class Circle:

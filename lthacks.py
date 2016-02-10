@@ -18,6 +18,17 @@ import getpass
 
 SCENES_DIR = "/vol/v1/scenes"
 
+def txtToDict(txtfile):
+
+	txt = open(txtfile, 'r')
+
+	dictionary = {}
+	for line in txt:
+		comps = line.split(":")
+		dictionary[int(comps[0])] = comps[1].strip()
+
+	return dictionary
+
 def getLastCommit(scriptPath):
     '''Returns last git commit hash, user, and time of specified script.'''
     cwd = os.getcwd()
@@ -333,8 +344,7 @@ def makeConfusion(y_test, predictions, classes):
 
     return full_cm
 
-def 
-:
+def makeConfusion_diffLabels(data, truthCol, predictionCol):
     '''Creates a confusion matrix for datasets w/ different truth & prediction labels. 
     Does NOT calculate users/producers accuracy. truthCol/predictionCol are strings.'''
     truthLabels = np.unique(data[truthCol]) 
