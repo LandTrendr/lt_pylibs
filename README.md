@@ -170,13 +170,13 @@ ______________________________________________________________________
 
 | PARAMETER     |             |
 | :------------ |:-------------|
-| **height**    | *integer* - height of the rectangle kernel for extraction|
-| **width**     | *integer* - width of the rectangle kernel for extraction |
+| **height**    | *integer* - height of the rectangle kernel for extraction, in pixels|
+| **width**     | *integer* - width of the rectangle kernel for extraction, in pixels |
 
 | ATTRIBUTE    |             |
 | :------------ |:-------------|
-| **height**    | *integer* - height of the rectangle kernel for extraction|
-| **width**     | *integer* - width of the rectangle kernel for extraction |
+| **height**    | *integer* - height of the rectangle kernel for extraction, in pixels|
+| **width**     | *integer* - width of the rectangle kernel for extraction, in pixels |
 
 Methods:
 
@@ -190,13 +190,13 @@ ______________________________________________________________________
 
 | PARAMETER     |             |
 | :------------ |:-------------|
-| **diameter**    | *integer* - diameter of circle kernel|
+| **diameter**    | *integer* - diameter of circle kernel, in pixels|
 
 | ATTRIBUTE     |             |
 | :------------ |:-------------|
-| **radius**    | *float* - radius of circle kernel|
-| **height**    | *integer* - height of the rectangle kernel for extraction|
-| **width**     | *integer* - width of the rectangle kernel for extraction |
+| **radius**    | *float* - radius of circle kernel, in pixels|
+| **height**    | *integer* - height of the rectangle kernel for extraction, in pixels|
+| **width**     | *integer* - width of the rectangle kernel for extraction, in pixels |
 
 Methods:
 
@@ -210,15 +210,15 @@ ______________________________________________________________________
 
 | PARAMETER     |             |
 | :------------ |:-------------|
-| **width**     | *integer* - width of the rectangle kernel for extraction |
-| **height**    | *integer* - height of the rectangle kernel for extraction|
+| **width**     | *integer* - width of the rectangle kernel for extraction, in pixels |
+| **height**    | *integer* - height of the rectangle kernel for extraction, in pixels|
 | **quadrant**     | *string* - which section of rectangle kernel to extract triangle from [choices: “north”, “east”, “south”, “west”] |
 NOTE: Use parameters to control angles & direction of triangle.
 
 | ATTRIBUTE     |             |
 | :------------ |:-------------|
-| **width**     | *integer* - width of the rectangle kernel for extraction |
-| **height**    | *integer* - height of the rectangle kernel for extraction|
+| **width**     | *integer* - width of the rectangle kernel for extraction, in pixels |
+| **height**    | *integer* - height of the rectangle kernel for extraction, in pixels|
 | **quadrant**     | *string* - which section of rectangle kernel to extract triangle from |
 | **midpoint**     | *tuple* - middle coordinate of rectangle kernel |
 
@@ -235,18 +235,18 @@ ______________________________________________________________________
 
 | PARAMETER     |             |
 | :------------ |:-------------|
-| **diameter**    | *integer* - diameter of circle kernel|
-| **startangle**     | *float* - start angle of pie arc, in degrees. Angle is based off unit circle. |
-| **endangle**    | *float* - end angle of pie arc, in degrees. Angle is based off unit circle.|
+| **diameter**    | *integer* - diameter of circle kernel, in pixels|
+| **startangle**     | *float* - start angle of pie arc, in degrees. Angle is based off upside-down unit circle. |
+| **endangle**    | *float* - end angle of pie arc, in degrees. Angle is based off upside-down unit circle.|
 | **arcNegBool**     | *boolean, optional (default = False)* - Arc to be drawn in the direction of decreasing angles? |
 
 | ATTRIBUTE     |             |
 | :------------ |:-------------|
-| **radius**    | *float* - radius of circle kernel|
-| **width**     | *integer* - width of the rectangle kernel for extraction |
-| **height**    | *integer* - height of the rectangle kernel for extraction|
-| **startangle**     | *float* - start angle of pie arc, in degrees. Angle is based off unit circle. |
-| **endangle**    | *float* - end angle of pie arc, in degrees. Angle is based off unit circle.|
+| **radius**    | *float* - radius of circle kernel, in pixels|
+| **width**     | *integer* - width of the rectangle kernel for extraction, in pixels |
+| **height**    | *integer* - height of the rectangle kernel for extraction, in pixels|
+| **startangle**     | *float* - start angle of pie arc, in degrees. Angle is based off upside-down unit circle. |
+| **endangle**    | *float* - end angle of pie arc, in degrees. Angle is based off upside-down unit circle.|
 | **arcNegBool**     | *boolean, optional (default = False)* - Arc to be drawn in the direction of decreasing angles? |
 
 
