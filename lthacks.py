@@ -146,40 +146,57 @@ def extract_kernel_and_coords(spec_ds,x,y,width,height,band,transform):
    
 def getStatFunc(astring, options=None):
 	'''Returns a statistical function from a "stat string". '''
+	
+	astring = astring.strip(' ').lower()
 
-	if astring.strip(' ').lower() == 'mean':
+	if astring == 'mean':
 		def func(anarray):
 			return np.mean(anarray)
-	elif astring.strip(' ').lower() == 'max':
+			
+	elif astring == 'max':
 		def func(anarray):
 			return np.max(anarray)
-	elif astring.strip(' ').lower() == 'median':
+			
+	elif astring == 'median':
 		def func(anarray):
 			return np.median(anarray)
-	elif astring.strip(' ').lower() == 'mode':
+			
+	elif astring == 'mode':
 		def func(anarray):
 			return mode(mode(anarray)[0][0])
-	elif astring.strip(' ').lower() == 'min':
+			
+	elif astring == 'min':
 		def func(anarray):
 			return np.min(anarray)
-	elif astring.strip(' ').lower() == "num_pix_with_data":
+			
+	elif astring == "num_pix_with_data":
 		def func(anarray):
 			return (anarray != options).sum()
-	elif astring.strip(' ').lower() == "num_pix_equal":
+			
+	elif astring == "num_pix_equal":
 		def func(anarray):
 			return (anarray == options).sum()
-	elif astring.strip(' ').lower() == "num_pix_between":
+			
+	elif astring == "num_pix_between":
 		def func(anarray):
 			inds = np.where(np.logical_and(anarray>=options[0], anarray<options[1]))
 			return len(inds[0])
 			#return ((anarray >= options[0]) and (anarray <= options[1])).sum()
-	elif astring.strip(' ').lower() == "stdev":
+			
+	elif astring == "stdev":
 		def func(anarray):
 			#mean = np.mean(anarray)
 			#mean_array = np.zeros(anarray.shape)
 			#mean_array[:] = mean
 			#return np.mean(np.square(anarray - mean_array))
 			return np.std(anarray)
+			
+	elif astring == "mid_pix":
+		def func(anarray):
+			anarray = np.array(anarray)
+			middle = lambda x: x[[slice(np.floor(d/2.), np.ceil(d/2.)) for d in x.shape]]
+			return middle(anarray)[0]
+			
 	else:
 		print sys.exit("Stat input not understood:"+ astring)
 	
